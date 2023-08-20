@@ -81,7 +81,7 @@ const products = [
     _id: "7",
     name: "Apple MacBook Air (M2, 2022)",
     image: "/images/macbook-air.jpg",
-    decription:
+    description:
       "Apple MacBook Air (M2, 2022) is a macOS laptop with a 13.60-inch display. It is powered by a Apple M2 processor and it comes with 8GB of RAM. The Apple MacBook Air (M2, 2022) packs 512GB of SSD storage.",
     brand: "Apple",
     category: "Laptop",
