@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { useParams } from "react-router-dom";
 import { Link } from "react-router-dom";
 import {
@@ -10,12 +11,20 @@ import {
   ListGroupItem,
 } from "react-bootstrap";
 import Rating from "../components/Rating";
+import Loader from "../components/Loader.jsx";
+import Message from "../components/Message.jsx";
 import { useGetProductDetailsQuery } from "../slices/productsApiSlice";
-import { useGetProductsQuery } from "../slices/productsApiSlice";
 
 const ProductScreen = () => {
   const { id: productId } = useParams();
-  const { data: product, isLoading, error } = useGetProductsQuery(productId);
+
+  const [qty, setQty] = useState(1);
+
+  const {
+    data: product,
+    isLoading,
+    error,
+  } = useGetProductDetailsQuery(productId);
 
   return (
     <>
@@ -24,9 +33,11 @@ const ProductScreen = () => {
       </Link>
 
       {isLoading ? (
-        <h2>Loading...</h2>
+        <Loader />
       ) : error ? (
-        <div> {error?.data?.message || error.error} </div>
+        <Message variant="danger">
+          {error?.data?.message || error.error}
+        </Message>
       ) : (
         <>
           <Row>
