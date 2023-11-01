@@ -1,3 +1,4 @@
+import path from "path";
 import express from "express";
 import dotenv from "dotenv";
 import cookieParser from "cookie-parser";
@@ -32,6 +33,7 @@ app.get("/api/config/paypal", (req, res) =>
 );
 
 if (process.env.NODE_ENV === "production") {
+  const __dirname = path.resolve();
   app.use(express.static(path.join(__dirname, "/frontend/build")));
 
   app.get("*", (req, res) =>
